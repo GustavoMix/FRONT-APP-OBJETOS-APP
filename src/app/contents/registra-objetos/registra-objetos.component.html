@@ -1,59 +1,66 @@
-
 <section class="joinnow">
-    <div class="container d-flex justify-content-center align-items-center bg-light" style="max-height: 90vh;">
-      <div class="card w-100 w-sm-75 w-md-50 w-lg-25 mt-5">
-        <h1 class="card-header text-center text-black">Registrar Objeto Perdido o Encontrado</h1>
-        <div class="card-body"> 
-          <form >
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label for="name">Nombre del objeto</label>
-                <input type="text" id="name" name="name" class="form-control" required >
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="category">Categoría del objeto</label>
-                <select id="category" name="category" class="form-control" required >
-                  <option value="">--Seleccione una opción--</option>
-                  <option value="perdido">Perdido</option>
-                  <option value="encontrado">Encontrado</option>
-                </select>
-              </div>
+  <div class="container d-flex justify-content-center align-items-center bg-light" style="height: 90vh;">
+    <div class="card w-100 w-md-75 w-lg-50 mt-5">
+      <h1 class="card-header text-center text-black">Registrar Objeto Perdido o Encontrado</h1>
+      <div class="card-body">
+        <form>
+          <div class="form-group row mb-4">
+            <label for="name" class="col-sm-3 col-form-label">Nombre del objeto</label>
+            <div class="col-sm-9">
+              <input type="text" id="name" name="name" class="form-control" required>
             </div>
-            <div class="form-group">
-              <label for="description">Descripción del objeto</label>
-              <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+          </div>
+          <div class="form-group row mb-4">
+            <label for="category" class="col-sm-3 col-form-label">Categoría del objeto</label>
+            <div class="col-sm-9">
+              <select id="category" name="category" class="form-control" required>
+                <option value="">--Seleccione una opción--</option>
+                <option value="perdido">Perdido</option>
+                <option value="encontrado">Encontrado</option>
+              </select>
             </div>
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label for="location">Ubicación donde se perdió o encontró el objeto</label>
-                <input type="text" id="location" name="location" class="form-control" required >
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="date">Fecha en que se perdió o encontró el objeto</label>
-                <input type="date" id="date" name="date" class="form-control" required >
-              </div>
+          </div>
+          <div class="form-group mb-4">
+            <label for="description">Descripción del objeto</label>
+            <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+          </div>
+          <div class="form-group row mb-4">
+            <label for="location" class="col-sm-3 col-form-label">Ubicación donde se perdió o encontró el objeto</label>
+            <div class="col-sm-9">
+              <input type="text" id="location" name="location" class="form-control" required>
             </div>
-            <div class="form-group">
-              <label for="image">Foto del objeto</label>
+          </div>
+          <div class="form-group row mb-4">
+            <label for="date" class="col-sm-3 col-form-label">Fecha en que se perdió o encontró el objeto</label>
+            <div class="col-sm-9">
+              <input type="date" id="date" name="date" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group row mb-4">
+            <label for="image" class="col-sm-3 col-form-label">Foto del objeto</label>
+            <div class="col-sm-9">
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="image" name="image" accept="image/*">
                 <label class="custom-file-label" for="image">Seleccione una imagen</label>
               </div>
-              <div class="image-result-container">
-                <div >
-                  <img class="img-fluid resultado-imagen">
-                </div>
-                <div  class="mt-2 ml-2">
-                  <p>Objeto detectado: </p>
-                  <p>Confianza: </p>
-                </div>
+            </div>
+          </div>
+          <div class="image-result-container mb-4">
+            <div class="row">
+              <div class="col">
+                <img class="img-fluid resultado-imagen">
+              </div>
+              <div class="col mt-2 ml-2">
+                <p>Objeto detectado: </p>
+                <p>Confianza: </p>
               </div>
             </div>
-            <div class="form-group text-center">
-              <button type="submit" class="btn btn-primary">Registrar</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+          </div>
+        </form>
       </div>
     </div>
-    </section>
+  </div>
+</section>

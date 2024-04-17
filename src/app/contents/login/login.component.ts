@@ -61,4 +61,6 @@ export class LoginComponent implements OnInit{
     console.log('Dirección:', this.registerAddress);
   }
 
+  
+
 }
