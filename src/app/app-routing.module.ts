@@ -9,6 +9,7 @@ import { EstadisticasComponent } from './contents/estadisticas/estadisticas.comp
 import { ObjetosEncontradosComponent } from './contents/objetos-encontrados/objetos-encontrados.component';
 import { ObjetosExtraviadosComponent } from './contents/objetos-extraviados/objetos-extraviados.component';
 import { RegistroActividadComponent } from './contents/registro-actividad/registro-actividad.component';
+import { IaComponent } from './contents/ia/ia.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'registrar-objetos',
     component: RegistraObjetosComponent,
+  },
+  {
+    path: 'ia',
+    component: IaComponent,
   },
 
 ];

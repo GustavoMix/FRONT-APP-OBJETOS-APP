@@ -11,6 +11,7 @@ import { ObjetosEncontradosComponent } from './contents/objetos-encontrados/obje
 import { RegistraObjetosComponent } from './contents/registra-objetos/registra-objetos.component';
 import { ObjetosExtraviadosComponent } from './contents/objetos-extraviados/objetos-extraviados.component';
 import { RegistroActividadComponent } from './contents/registro-actividad/registro-actividad.component';
+import { IaComponent } from './contents/ia/ia.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegistroActividadComponent } from './contents/registro-actividad/regist
     ObjetosEncontradosComponent,
     RegistraObjetosComponent,
     ObjetosExtraviadosComponent,
-    RegistroActividadComponent
+    RegistroActividadComponent,
+    IaComponent
   ],
   imports: [
     BrowserModule,
