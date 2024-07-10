@@ -12,6 +12,8 @@ import { RegistraObjetosComponent } from './contents/registra-objetos/registra-o
 import { ObjetosExtraviadosComponent } from './contents/objetos-extraviados/objetos-extraviados.component';
 import { RegistroActividadComponent } from './contents/registro-actividad/registro-actividad.component';
 import { IaComponent } from './contents/ia/ia.component';
+import { environment } from 'src/environments/environments';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,20 @@ import { IaComponent } from './contents/ia/ia.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: SpinnerInterceptor,
+    //   multi: true,
+    // },
+    {
+      provide: 'APP_RUTA_BACKEND',
+      useValue: environment.rutaApiBackend,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

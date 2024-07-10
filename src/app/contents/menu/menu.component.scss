@@ -1,7 +1,7 @@
 .home img
 {
-    width: 100%;
-    height: 45vw;
+    width: 110vw;
+    height: 40vw;
     object-position: center;
     object-fit: cover;
 }
@@ -25,45 +25,6 @@
 .h1{
   color: black;
 }
-
-@media screen and (max-width:600px)
-{
-    .home img
-{
-    height: 700px;
-}
-    .homecontent h1
-{
-    font-size: 40px;
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -164,3 +125,5 @@ body {
   .menu ul li a:target {
     border-bottom-color: #F44336;
   }
+
+  

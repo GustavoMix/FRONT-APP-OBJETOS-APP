@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
+  darkMode = false;
 
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+  }
 }
