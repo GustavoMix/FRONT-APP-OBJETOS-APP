@@ -8,6 +8,9 @@ import { ObjetosEncontradosService } from 'src/app/services/objetos-encontrados/
 })
 export class ObjetosEncontradosComponent implements OnInit {
   objetosEncontrados: any[] = [];
+  objetosFiltrados: any[] = [];
+  currentCategory: string = '';
+  selectedObjeto: any = null;
 
   constructor(private objetosService: ObjetosEncontradosService) {}
 
@@ -18,12 +21,11 @@ export class ObjetosEncontradosComponent implements OnInit {
   async getObjetosEncontrados() {
     try {
       const response = await this.objetosService.ObjetosEncontrados();
-      console.log('Received response:', response);  // Log the entire response
+      console.log('Received response:', response);
   
       if (response && response.codigoRespuesta === '2000' && Array.isArray(response.data)) {
         this.objetosEncontrados = response.data;
-        console.log('Objetos Encontrados:', this.objetosEncontrados);  // Log the extracted data array
-  
+
         this.objetosEncontrados.forEach(objeto => {
           if (objeto.fotoBase64 && objeto.fotoBase64.startsWith('data:image/jpeg;base64,')) {
             try {
@@ -42,16 +44,14 @@ export class ObjetosEncontradosComponent implements OnInit {
               objeto.fotoUrl = URL.createObjectURL(blob);
             } catch (error) {
               console.error('Error decoding base64:', error);
-              // Handle the error as needed, e.g., set a placeholder image
               objeto.fotoUrl = 'assets/images/placeholder.jpg';
             }
           } else {
-            // Handle case where fotoBase64 is not a valid image base64 string
-            console.warn('No es una cadena base64 de imagen válida:', objeto.fotoBase64);
-            objeto.fotoUrl = 'assets/images/placeholder.jpg'; // Otra imagen de marcador de posición o mensaje adecuado
+            objeto.fotoUrl = 'assets/images/placeholder.jpg';
           }
         });
-        console.log('Objetos con Foto URL:', this.objetosEncontrados);  // Log the objects with updated photo URLs
+
+        this.filterObjects();  
       } else {
         console.error('Error: Unexpected response format or error code.');
       }
@@ -59,4 +59,31 @@ export class ObjetosEncontradosComponent implements OnInit {
       console.error('Error al obtener objetos encontrados', error);
     }
   }
+
+  onSearchInput(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.filterObjects(inputElement.value);
+  }
+
+filterByCategory(category: string): void {
+  this.currentCategory = category;
+  console.log('Categoría Actual:', this.currentCategory);
+  this.filterObjects();
+}
+
+  filterObjects(searchTerm: string = ''): void {
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+    this.objetosFiltrados = this.objetosEncontrados.filter(objeto => {
+      const lowerCaseCategoria = objeto.categoria?.toLowerCase() || '';
+      const matchesCategory = this.currentCategory
+        ? lowerCaseCategoria.includes(this.currentCategory.toLowerCase())
+        : true;
+      const matchesSearchTerm = (objeto.nombre?.toLowerCase().includes(lowerCaseSearchTerm) ||
+                                 objeto.descripcion?.toLowerCase().includes(lowerCaseSearchTerm) ||
+                                 lowerCaseCategoria.includes(lowerCaseSearchTerm));
+      return matchesCategory && matchesSearchTerm;
+    });
+    console.log('Objetos Filtrados:', this.objetosFiltrados);
+  }
+  
 }
