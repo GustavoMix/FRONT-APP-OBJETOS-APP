@@ -6,13 +6,23 @@
     object-fit: cover;
 }
 
-.homecontent
-{
-        position: absolute;
-        top: 50%;
-        left: 40%;
-        transform: translate(-50%,-50%);
+.home {
+  background: linear-gradient(to bottom, #7a0909 10%, #690e0e 100%);
+  color: #ffffff; 
+  padding: 20px; 
+  text-align: center; 
+  width: 100vw; 
+  height: 100vh; 
+  box-sizing: border-box; 
 }
+
+.homecontent {
+  position: relative; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .homecontent h1
 {
     color: #ffffff;
@@ -25,9 +35,6 @@
 .h1{
   color: black;
 }
-
-
-
 
 
 body {
