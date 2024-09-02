@@ -1,50 +1,47 @@
+<router-outlet class="router-outlet-texto"></router-outlet>
 
-<router-outlet class="router-outlet-texto">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" routerLink="">Sistema de Registro y Búsqueda de Objetos Perdidos</a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
+  <div class="collapse navbar-collapse " [ngClass]="{ 'show': isNavbarCollapsed }">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="objetos-encontrados">Objetos Encontrados</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="objetos-extraviados">Objetos Extraviados</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="registrar-objetos">Registrar Objetos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="registro-actividad">Registro de Actividad</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="estadisticas">Estadísticas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="login">Ingresar</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="contactos">Contactos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="ia">IA</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" routerLink="">Sistema de Registro y Búsqueda de Objetos Perdidos</a>
-    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" [ngClass]="{ 'show': isNavbarCollapsed }">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="objetos-encontrados">Objetos Encontrados</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="objetos-extraviados">Objetos Extraviados</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="registrar-objetos">Registrar Objetos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="registro-actividad">Registro de Actividad</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="estadisticas">Estadisticas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="login">Ingresar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="contactos">Contactos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="ia">ia</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  
-  
-  <router-outlet></router-outlet>
-  <!-- footer -->
-  <footer class="text-center mt-2">
-    <p>&copy; Unidad Educativa 25 de Mayo</p>
-  </footer>
-</router-outlet>
+<router-outlet></router-outlet>
+
+<!-- Footer -->
+<footer class="text-center">
+  <p>&copy; Unidad Educativa 25 de Mayo</p>
+</footer>

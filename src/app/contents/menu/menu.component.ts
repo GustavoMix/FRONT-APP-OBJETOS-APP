@@ -11,4 +11,6 @@ export class MenuComponent {
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
   }
+
+  
 }
