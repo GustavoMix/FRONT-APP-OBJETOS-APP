@@ -1,13 +1,11 @@
-<router-outlet class="router-outlet-texto"></router-outlet>
-
-<nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" routerLink="">Sistema de Registro y Búsqueda de Objetos Perdidos</a>
+<!-- Navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark">
   <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse " [ngClass]="{ 'show': isNavbarCollapsed }">
-    <ul class="navbar-nav ml-auto">
+  <div class="collapse navbar-collapse justify-content-center" [ngClass]="{ 'show': isNavbarCollapsed }">
+    <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" routerLink="">Inicio</a>
       </li>
@@ -39,9 +37,10 @@
   </div>
 </nav>
 
-<router-outlet></router-outlet>
+<!-- Contenido principal -->
+<router-outlet class="router-outlet-texto"></router-outlet>
 
-<!-- Footer -->
-<footer class="text-center">
+<!-- Pie de página -->
+<footer class="footer">
   <p>&copy; Unidad Educativa 25 de Mayo</p>
 </footer>

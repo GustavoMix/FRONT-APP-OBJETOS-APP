@@ -16,6 +16,8 @@ export class ObjetosEncontradosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getObjetosEncontrados();
+
+    this.objetosFiltrados = this.objetosEncontrados; 
   }
 
   async getObjetosEncontrados() {
@@ -60,30 +62,44 @@ export class ObjetosEncontradosComponent implements OnInit {
     }
   }
 
-  onSearchInput(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
-    this.filterObjects(inputElement.value);
+  onSearchInput(event: any): void {
+    const searchTerm = event.target.value.toLowerCase();
+    this.objetosFiltrados = this.objetosEncontrados.filter(objeto => 
+      objeto.nombre.toLowerCase().includes(searchTerm) ||
+      objeto.descripcion.toLowerCase().includes(searchTerm)
+    );
   }
 
-filterByCategory(category: string): void {
-  this.currentCategory = category;
-  console.log('Categoría Actual:', this.currentCategory);
-  this.filterObjects();
-}
+  setSelectedObjeto(objeto: any): void {
+    this.selectedObjeto = objeto;
+  }
+  filterByCategory(category: string): void {
+    if (category === '') {
+      this.objetosFiltrados = this.objetosEncontrados;
+    } else {
+      this.objetosFiltrados = this.objetosEncontrados.filter(objeto => objeto.categoria === category);
+    }
+  }
+  
 
   filterObjects(searchTerm: string = ''): void {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
+  
     this.objetosFiltrados = this.objetosEncontrados.filter(objeto => {
       const lowerCaseCategoria = objeto.categoria?.toLowerCase() || '';
       const matchesCategory = this.currentCategory
-        ? lowerCaseCategoria.includes(this.currentCategory.toLowerCase())
+        ? lowerCaseCategoria === this.currentCategory.toLowerCase()
         : true;
+  
       const matchesSearchTerm = (objeto.nombre?.toLowerCase().includes(lowerCaseSearchTerm) ||
                                  objeto.descripcion?.toLowerCase().includes(lowerCaseSearchTerm) ||
                                  lowerCaseCategoria.includes(lowerCaseSearchTerm));
+  
       return matchesCategory && matchesSearchTerm;
     });
+  
     console.log('Objetos Filtrados:', this.objetosFiltrados);
   }
+  
   
 }

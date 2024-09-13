@@ -1,24 +1,91 @@
-.router-outlet-texto {
-    white-space: nowrap;
-    padding-top: 20px;
-  }
-  
+/* General */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Navegación centrada */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-color: #ffdd57;
+}
+
+.navbar-collapse {
+  justify-content: center;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+  text-align: center;
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: #ffdd57 !important;
+  text-decoration: none;
+}
+
+.navbar .nav-item.active .nav-link {
+  color: #ffdd57 !important;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255, 221, 87, 0.6);
+}
+
+/* Footer centrado */
+.footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 15px 0;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
   .navbar {
-    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
   }
-  
-  .navbar-brand, .nav-link {
-    color: #ffffff !important;
-    font-weight: 600;
+
+  .navbar-nav {
+    text-align: center;
   }
-  
-  .navbar-brand:hover, .nav-link:hover {
-    color: #ffdd57 !important;
+
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
   }
-  
-  footer {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
+
+  .footer {
     padding: 10px 0;
   }
-  
+
+  .router-outlet-texto {
+    padding: 10px;
+    white-space: normal;
+  }
+}
