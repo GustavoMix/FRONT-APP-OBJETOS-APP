@@ -1,60 +1,76 @@
+body {
+  background: linear-gradient(to bottom, #a01d1d, #550b0b);
+  margin: 0;
+  height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
 .joinnow {
-  background-color: #eff6ff;
   padding: 7% 5%;
+  animation: fadeIn 1s ease-out;
 }
-.about {
-    background-color: #f8f9fa; /* Fondo gris claro */
-    padding: 50px 0; /* Espacio arriba y abajo */
-  }
-  
-  .about h1 {
-    color: #333; /* Texto gris oscuro */
-  }
-  
-  .about p {
-    font-size: 18px; /* Tamaño de fuente grande */
-    line-height: 1.5em; /* Espaciado entre líneas */
-    margin-bottom: 20px; /* Espacio abajo */
-  }
-  
-  .follow {
-    margin-top: 50px; /* Espacio arriba */
-  }
-  
-  .follow h4 {
-    color: #333; /* Texto gris oscuro */
-    margin-bottom: 20px; /* Espacio abajo */
-  }
-  
-  .follow a {
-    display: inline-block;
-    background-color: #007bff; /* Fondo azul */
-    color: #fff; /* Texto blanco */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espacio arriba y abajo, espacio izquierda y derecha */
-    margin-right: 10px; /* Espacio derecho */
-  }
-  
-  .follow a:hover {
-    background-color: #0056b3; /* Fondo azul oscuro cuando el cursor está encima */
-  }
 
-  /* Estilos para el enlace de Facebook */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.joinnow h1 {
+  text-align: center;
+  margin-bottom: 5%;
+  font-size: 2.5rem;
+}
+
+.joinnow p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.follow {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.follow h4 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.follow a {
+  display: inline-block;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.follow a:hover {
+  transform: translateY(-3px);
+}
+
 .follow a.facebook {
-  background-color: #3B5998; /* Fondo azul oscuro */
+  background-color: #3B5998;
 }
 
-/* Estilos para el enlace de Youtube */
 .follow a.youtube {
-  background-color: #FF0000; /* Fondo rojo */
+  background-color: #FF0000;
 }
 
-/* Estilos para el enlace de Instagram */
 .follow a.instagram {
-  background-color: #E4405F; /* Fondo rosa */
+  background-color: #E4405F;
 }
 
-/* Estilos para el enlace de Twitter */
 .follow a.twitter {
-  background-color: #1DA1F2; /* Fondo celeste */
+  background-color: #1DA1F2;
 }

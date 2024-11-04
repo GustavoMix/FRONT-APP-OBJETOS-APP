@@ -2,4 +2,24 @@
     background-color: #1e466e; /* Color azul */
     color: #fff; /* Texto blanco */
   }
-  
+  body {
+    background: linear-gradient(to bottom, #a01d1d, #550b0b);
+    margin: 0;
+    height: 100vh;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  .joinnow {
+    padding: 3% 5%;
+    animation: fadeIn 1s ease-out;
+  }
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
