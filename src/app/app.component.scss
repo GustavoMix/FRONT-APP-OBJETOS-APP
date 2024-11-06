@@ -7,9 +7,11 @@ body, html {
   font-family: 'Roboto', sans-serif;
   background-color: #f4f4f4;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
 }
 
-/* Navegación centrada */
 .navbar {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 10px 20px;
@@ -49,16 +51,17 @@ body, html {
   border-color: rgba(255, 221, 87, 0.6);
 }
 
-/* Footer centrado */
+
 .footer {
   background-color: rgba(0, 0, 0, 0.8);
   color: #ffffff;
   padding: 15px 0;
   font-size: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  flex-shrink: 0;
 }
 
 footer p {
@@ -66,26 +69,4 @@ footer p {
   font-size: 0.9rem;
 }
 
-/* Responsivo para pantallas más pequeñas */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 10px;
-  }
 
-  .navbar-nav {
-    text-align: center;
-  }
-
-  .navbar-nav .nav-item {
-    margin-bottom: 10px;
-  }
-
-  .footer {
-    padding: 10px 0;
-  }
-
-  .router-outlet-texto {
-    padding: 10px;
-    white-space: normal;
-  }
-}

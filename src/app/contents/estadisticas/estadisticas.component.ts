@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { EstadisticasService } from 'src/app/services/estadisticas/estadisticas.service';
 
 @Component({
   selector: 'app-estadisticas',
@@ -7,50 +8,95 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./estadisticas.component.scss']
 })
 export class EstadisticasComponent implements AfterViewInit {
+  private chart: any;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private estadisticasService: EstadisticasService) { }
 
   ngAfterViewInit(): void {
-    this.createBarChart();
+    this.loadEstadisticas();
   }
 
-  createBarChart(): void {
-    const ctx = this.elementRef.nativeElement.querySelector('#barChart').getContext('2d');
+  async loadEstadisticas(): Promise<void> {
+    try {
+      const response = await this.estadisticasService.estadisticas();
+      if (response.codigoRespuesta === "2000" && response.data) {
+        const usuariosActivos = this.extractValue(response.data, 'Usuarios activos');
+        const sesionesActivas = this.extractValue(response.data, 'Sesiones activas');
+        const objetosRegistrados = this.extractValue(response.data, 'Objetos registrados');
+        const total = usuariosActivos + sesionesActivas + objetosRegistrados;
+        this.createBarChart(
+          this.calculatePercentage(usuariosActivos, total),
+          this.calculatePercentage(sesionesActivas, total),
+          this.calculatePercentage(objetosRegistrados, total)
+        );
+      } else {
+        console.error('Error en la respuesta:', response.mensaje);
+      }
+    } catch (error) {
+      console.error('Error al cargar las estadísticas:', error);
+    }
+  }
 
+  createBarChart(usuariosActivos: number, sesionesActivas: number, objetosRegistrados: number): void {
+    const ctx = this.elementRef.nativeElement.querySelector('#barChart').getContext('2d');
     const data = {
-      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+      labels: ['Usuarios activos', 'Sesiones activas', 'Objetos registrados'],
       datasets: [
         {
-          label: 'Objetos extraviados',
-          data: [50, 40, 30, 20, 10],
-          backgroundColor: 'rgba(255, 99, 132, 0.7)'
-        },
-        {
-          label: 'Objetos buscados',
-          data: [30, 35, 40, 45, 50],
-          backgroundColor: 'rgba(54, 162, 235, 0.7)'
-        },
-        {
-          label: 'Objetos recuperados',
-          data: [20, 25, 30, 35, 40],
-          backgroundColor: 'rgba(75, 192, 192, 0.7)'
+          label: 'Porcentaje',
+          data: [usuariosActivos, sesionesActivas, objetosRegistrados],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(75, 192, 192, 0.7)'
+          ]
         }
       ]
     };
 
     const options = {
       scales: {
-        x: { stacked: true }, 
-        y: { stacked: true } 
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: 'white', 
+            callback: (value: number | string) => {
+              return typeof value === 'number' ? value + '%' : value;
+            }
+          }
+        },
+        x: {
+          ticks: {
+            color: 'white' 
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white' 
+          }
+        }
       }
     };
 
-    new Chart(ctx, {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    this.chart = new Chart(ctx, {
       type: 'bar',
       data: data,
       options: options
     });
   }
 
+  private extractValue(data: any[], tipo: string): number {
+    const item = data.find(item => item.tipo === tipo);
+    return item ? item.valor : 0;
+  }
 
+  private calculatePercentage(value: number, total: number): number {
+    return total > 0 ? (value / total) * 100 : 0;
+  }
 }

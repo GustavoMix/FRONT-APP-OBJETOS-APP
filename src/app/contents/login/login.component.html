@@ -1,64 +1,74 @@
-<section class="joinnow">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-8">
-        <div class="card-deck">
-          <div class="card border">
+<body>
+  <section class="joinnow">
+    <h1 class="text-center ">Bienvenido</h1>
+    <div class="container py-3">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+          <div class="card shadow-lg border rounded-3">
             <div class="card-body">
-
-              <h2 class="card-title text-center mb-4">Bienvenido</h2>
+              <br>
               <div class="d-flex justify-content-around mb-4">
-                <button type="button" class="btn btn-primary btn-lg" (click)="showLoginForm()" [class.active]="isLoginActive">Iniciar sesión</button>
-                <button type="button" class="btn btn-danger btn-lg" (click)="showRegisterForm()" [class.active]="isRegisterActive">Registrarse</button>
+                <button type="button" class="btn btn-primary btn-lg" (click)="showLoginForm()" [class.active]="isLoginActive">
+                  <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                </button>
+                <button type="button" class="btn btn-danger btn-lg" (click)="showRegisterForm()" [class.active]="isRegisterActive">
+                  <i class="fas fa-user-plus"></i> Registrarse
+                </button>
               </div>
 
+              <!-- Login Form -->
               <form *ngIf="isLoginFormVisible" (ngSubmit)="onLogin()">
-                <div class="form-group">
+                <div class="form-group mb-3">
                   <label for="email-login">Correo electrónico</label>
-                  <input type="email" class="form-control" id="email-login" required>
+                  <input type="email" class="form-control form-control-lg" id="email-login" required placeholder="Ingrese su correo">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                   <label for="password-login">Contraseña</label>
-                  <input type="password" class="form-control" id="password-login" required>
+                  <input type="password" class="form-control form-control-lg" id="password-login" required placeholder="Ingrese su contraseña">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-4">Ingresar</button>
-                <div class="forgot-password-link text-center">
-                  <a href="/">¿Olvidaste tu contraseña?</a>
+                <button type="submit" class="btn btn-primary btn-block w-100 mt-3">
+                  <i class="fas fa-sign-in-alt"></i> Ingresar
+                </button>
+                <div class="forgot-password-link text-center mt-3">
+                  <a href="/" class="texto">¿Olvidaste tu contraseña?</a>
                 </div>
               </form>
 
+              <!-- Register Form -->
               <form *ngIf="isRegisterFormVisible" (ngSubmit)="onRegister()">
-                <div class="form-row">
-                  <div class="form-group ">
+                <div class="form-row mb-3">
+                  <div class="form-group mb-3">
                     <label for="first-name">Nombre</label>
-                    <input type="text" class="form-control" id="first-name" required>
+                    <input type="text" class="form-control form-control-lg" id="first-name" required placeholder="Ingrese su nombre">
                   </div>
-                  <div class="form-group ">
+                  <div class="form-group mb-3">
                     <label for="last-name">Apellido</label>
-                    <input type="text" class="form-control" id="last-name" required>
+                    <input type="text" class="form-control form-control-lg" id="last-name" required placeholder="Ingrese su apellido">
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                   <label for="email-register">Correo electrónico</label>
-                  <input type="email" class="form-control" id="email-register" required>
+                  <input type="email" class="form-control form-control-lg" id="email-register" required placeholder="Ingrese su correo">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                   <label for="password-register">Contraseña</label>
-                  <input type="password" class="form-control" id="password-register" required>
+                  <input type="password" class="form-control form-control-lg" id="password-register" required placeholder="Ingrese su contraseña">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                   <label for="confirm-password">Confirmar contraseña</label>
-                  <input type="password" class="form-control" id="confirm-password" required>
+                  <input type="password" class="form-control form-control-lg" id="confirm-password" required placeholder="Confirme su contraseña">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                   <label for="phone-number">Teléfono</label>
-                  <input type="tel" class="form-control" id="phone-number" required>
+                  <input type="tel" class="form-control form-control-lg" id="phone-number" required placeholder="Ingrese su teléfono">
                 </div>
-                <div class="form-group">
-                  <label for="address">gmail</label>
-                  <input type="text" class="form-control" id="address" required>
+                <div class="form-group mb-3">
+                  <label for="address">Gmail</label>
+                  <input type="text" class="form-control form-control-lg" id="address" required placeholder="Ingrese su Gmail">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-4">Registrarse</button>
+                <button type="submit" class="btn btn-danger btn-block w-100 mt-3">
+                  <i class="fas fa-user-plus"></i> Registrarse
+                </button>
               </form>
 
             </div>
@@ -66,67 +76,5 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-
-<!-- 
-
-
-<div class="login-wrap">
-	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-		<div class="login-form">
-			<div class="sign-in-htm">
-				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span> Keep me Signed in</label>
-				</div>
-				<div class="group">
-					<input type="submit" class="button" value="Sign In">
-				</div>
-				<div class="hr"></div>
-				<div class="foot-lnk">
-					<a href="#forgot">Forgot Password?</a>
-				</div>
-			</div>
-			<div class="sign-up-htm">
-				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Repeat Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input">
-				</div>
-				<div class="group">
-					<input type="submit" class="button" value="Sign Up">
-				</div>
-				<div class="hr"></div>
-				<div class="foot-lnk">
-					<label for="tab-1">Already Member?</label>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
- -->
+  </section>
+</body>

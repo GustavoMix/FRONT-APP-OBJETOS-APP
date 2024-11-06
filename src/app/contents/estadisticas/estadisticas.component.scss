@@ -1,6 +1,40 @@
+body {
+  background: linear-gradient(to bottom, #a01d1d, #550b0b);
+  margin: 0;
+  height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.efecto {
+  padding: 2% 2%;
+  animation: fadeIn 1s ease-out;
+  color: white;
+}
+
 #barChart {
-    width: 60vw; /* Ancho del gráfico */
-    height: 100vw; /* Alto del gráfico */
-    margin: 0 auto; /* Centrar el gráfico horizontalmente */
+  width: 110%;
+  height: 100%;
+  margin: 0 auto; 
+}
+
+div {
+  text-align: center;
+  color: white; 
+}
+
+canvas {
+  display: block;
+  margin: 0 auto; 
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
   }
-  
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}

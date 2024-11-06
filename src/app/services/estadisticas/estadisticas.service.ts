@@ -6,15 +6,14 @@ import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root'
 })
-export class RegistroActividadService {
-
+export class EstadisticasService {
   urlBack = environment.rutaApiBackend + '/api';
   constructor(private http: HttpClient) { 
 
   }
 
-  async registroActividad() {
-    let url = `${this.urlBack}/objetos/actividad`;
+  async estadisticas() {
+    let url = `${this.urlBack}/objetos/estadisticas`;
     return await lastValueFrom(this.http.get<any>(url));
   }
 

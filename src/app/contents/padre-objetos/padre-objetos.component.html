@@ -1,0 +1,50 @@
+<!-- Navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse justify-content-center" [ngClass]="{ 'show': isNavbarCollapsed }">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/objetos-encontrados">Objetos Encontrados</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="objetos-extraviados">Objetos Extraviados</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="registrar-objetos">Registrar Objetos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="registro-actividad">Registro de Actividad</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="estadisticas">Estadísticas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="login">Ingresar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contactos">Contactos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="ia">IA</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <section class="home">
+    <div class="overlay"></div>
+    <div class="homecontent">
+      <h1 class="title">Sistema de Registro y Búsqueda de Objetos</h1>
+      <p class="subtitle">Unidad Educativa 25 de Mayo</p>
+      <div class="buttons">
+        <a routerLink="login" class="btn btn-lg btn-outline-light">Ingresar</a>
+        <a routerLink="registrar-objetos" class="btn btn-lg btn-outline-light">Registrar objeto</a>
+      </div>
+    </div>
+  </section>
+  

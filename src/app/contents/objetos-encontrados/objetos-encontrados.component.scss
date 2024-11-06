@@ -1,0 +1,31 @@
+body {
+    background: linear-gradient(to bottom, #a01d1d, #550b0b);
+    margin: 0;
+    height: 100vh;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+
+  .footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .efecto {
+    padding: 2% 2%;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }

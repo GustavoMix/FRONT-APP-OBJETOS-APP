@@ -10,6 +10,7 @@ import { ObjetosEncontradosComponent } from './contents/objetos-encontrados/obje
 import { ObjetosExtraviadosComponent } from './contents/objetos-extraviados/objetos-extraviados.component';
 import { RegistroActividadComponent } from './contents/registro-actividad/registro-actividad.component';
 import { IaComponent } from './contents/ia/ia.component';
+import { PadreObjetosComponent } from './contents/padre-objetos/padre-objetos.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,12 @@ const routes: Routes = [
     path: 'ia',
     component: IaComponent,
   },
+  {
+    path: 'padre',
+    component: PadreObjetosComponent,
+  },
+
+
 
 ];
 

@@ -16,8 +16,6 @@ export class ObjetosEncontradosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getObjetosEncontrados();
-
-    this.objetosFiltrados = this.objetosEncontrados; 
   }
 
   async getObjetosEncontrados() {
@@ -28,7 +26,9 @@ export class ObjetosEncontradosComponent implements OnInit {
       if (response && response.codigoRespuesta === '2000' && Array.isArray(response.data)) {
         this.objetosEncontrados = response.data;
 
+        // Asignar categorías personalizadas basadas en 'nombre' o 'descripcion'
         this.objetosEncontrados.forEach(objeto => {
+          objeto.categoria = this.getCategoria(objeto);
           if (objeto.fotoBase64 && objeto.fotoBase64.startsWith('data:image/jpeg;base64,')) {
             try {
               const byteCharacters = atob(objeto.fotoBase64.split(',')[1]);
@@ -53,13 +53,49 @@ export class ObjetosEncontradosComponent implements OnInit {
           }
         });
 
-        this.filterObjects();  
+        // Mostrar todos los objetos inicialmente
+        this.objetosFiltrados = this.objetosEncontrados;  
       } else {
         console.error('Error: Unexpected response format or error code.');
       }
     } catch (error) {
       console.error('Error al obtener objetos encontrados', error);
     }
+  }
+
+  getCategoria(objeto: any): string {
+    // Aquí puedes definir cómo clasificar los objetos en diferentes categorías
+    const nombreLower = objeto.nombre.toLowerCase();
+    if (nombreLower.includes('cuaderno')) {
+      return 'CUADERNOS';
+    } else if (nombreLower.includes('lápiz') || nombreLower.includes('lapiz')) {
+      return 'LAPICES';
+    } else if (nombreLower.includes('bolígrafo') || nombreLower.includes('boligrafo')) {
+      return 'BOLIGRAFOS';
+    } else if (nombreLower.includes('goma')) {
+      return 'GOMAS';
+    } else if (nombreLower.includes('mochila')) {
+      return 'MOCHILAS';
+    } else if (nombreLower.includes('celular')) {
+      return 'CELULARES';
+    } else if (nombreLower.includes('credencial')) {
+      return 'CREDENCIALES';
+    } else {
+      return 'OTROS';
+    }
+  }
+
+  // Método para manejar el filtrado por categoría
+  filterByCategory(category: string): void {
+    this.currentCategory = category;
+
+    if (category === '') {
+      this.objetosFiltrados = this.objetosEncontrados;
+    } else {
+      this.objetosFiltrados = this.objetosEncontrados.filter(objeto => objeto.categoria === category);
+    }
+
+    console.log('Filtrando por categoría:', category, this.objetosFiltrados);
   }
 
   onSearchInput(event: any): void {
@@ -73,33 +109,4 @@ export class ObjetosEncontradosComponent implements OnInit {
   setSelectedObjeto(objeto: any): void {
     this.selectedObjeto = objeto;
   }
-  filterByCategory(category: string): void {
-    if (category === '') {
-      this.objetosFiltrados = this.objetosEncontrados;
-    } else {
-      this.objetosFiltrados = this.objetosEncontrados.filter(objeto => objeto.categoria === category);
-    }
-  }
-  
-
-  filterObjects(searchTerm: string = ''): void {
-    const lowerCaseSearchTerm = searchTerm.toLowerCase();
-  
-    this.objetosFiltrados = this.objetosEncontrados.filter(objeto => {
-      const lowerCaseCategoria = objeto.categoria?.toLowerCase() || '';
-      const matchesCategory = this.currentCategory
-        ? lowerCaseCategoria === this.currentCategory.toLowerCase()
-        : true;
-  
-      const matchesSearchTerm = (objeto.nombre?.toLowerCase().includes(lowerCaseSearchTerm) ||
-                                 objeto.descripcion?.toLowerCase().includes(lowerCaseSearchTerm) ||
-                                 lowerCaseCategoria.includes(lowerCaseSearchTerm));
-  
-      return matchesCategory && matchesSearchTerm;
-    });
-  
-    console.log('Objetos Filtrados:', this.objetosFiltrados);
-  }
-  
-  
 }

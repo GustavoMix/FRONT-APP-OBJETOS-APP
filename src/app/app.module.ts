@@ -14,6 +14,7 @@ import { RegistroActividadComponent } from './contents/registro-actividad/regist
 import { IaComponent } from './contents/ia/ia.component';
 import { environment } from 'src/environments/environments';
 import { HttpClientModule } from '@angular/common/http';
+import { PadreObjetosComponent } from './contents/padre-objetos/padre-objetos.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistraObjetosComponent,
     ObjetosExtraviadosComponent,
     RegistroActividadComponent,
-    IaComponent
+    IaComponent,
+    PadreObjetosComponent
   ],
   imports: [
     BrowserModule,
