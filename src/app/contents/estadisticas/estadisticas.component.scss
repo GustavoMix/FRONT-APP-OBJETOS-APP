@@ -1,40 +1,43 @@
 body {
   background: linear-gradient(to bottom, #a01d1d, #550b0b);
   margin: 0;
-  height: 100vh;
+  height: 90vh;
   color: white;
   font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .efecto {
-  padding: 2% 2%;
+  width: 90%; /* Ajusta el ancho para pantallas más pequeñas */
+  max-width: 1200px; /* Limita el tamaño máximo en pantallas grandes */
   animation: fadeIn 1s ease-out;
   color: white;
 }
 
 #barChart {
-  width: 110%;
-  height: 100%;
-  margin: 0 auto; 
-}
-
-div {
-  text-align: center;
-  color: white; 
+  width: 100%; /* Hace que el gráfico ocupe el ancho completo del contenedor */
+  height: auto; /* Mantiene la proporción del canvas */
+  margin: 0 auto;
 }
 
 canvas {
   display: block;
   margin: 0 auto; 
+  max-width: 100%; /* Asegura que no se desborde en pantallas pequeñas */
+  height: auto; /* Mantiene la proporción */
 }
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
